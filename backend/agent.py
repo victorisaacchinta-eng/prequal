@@ -26,6 +26,7 @@ CLAIM_GUARDS = [
     (re.compile(r"\b(udyam|msme)\b", re.I), "udyam_certificate", "Udyam/MSME registration"),
     (re.compile(r"\bquality\s+manual\b", re.I), "quality_manual", "quality manual"),
 ]
+COMMON_NOUNS = {"environment", "quality", "safety", "solvency", "insurance", "company", "bank", "audited"}
 NEGATION = re.compile(r"\b(not|no|never|without|neither|nor|don't|do not|does not|are not|is not)\b", re.I)
 
 
@@ -84,8 +85,12 @@ def answer_document(q: dict, cache: dict, m) -> dict | None:
                 else f"Attached: {doc['name']}{detail}. File: {doc.get('file')}.")
         return dict(draft_text=text, status="auto", confidence=1.0, source="document",
                     evidence={"items": items, "timeline": []}, agent_note=f"document '{key}' is on file")
-    text = (f"No. We do not hold a {doc['name']} at present." if is_yes_no
-            else f"Not available. We do not hold a {doc['name']}.")
+    first, _, rest = doc["name"].partition(" ")
+    # Lowercase ordinary nouns mid-sentence; keep acronyms and proper nouns (ISO, Udyam) as written.
+    name = f"{first.lower()} {rest}".strip() if first.lower().rstrip(",") in COMMON_NOUNS else doc["name"]
+    article = "an" if name[0].lower() in "aeiou" else "a"
+    text = (f"No. We do not hold {article} {name} at present." if is_yes_no
+            else f"Not available. We do not hold {article} {name}.")
     return dict(draft_text=text, status="gap", confidence=1.0, source="document",
                 evidence={"items": items, "timeline": []},
                 agent_note=f"'{doc['name']}' is not on file. The agent will not claim it. Decide whether to answer No, or obtain the document.")
