@@ -17,6 +17,7 @@ from .ingest import load_cache
 log = logging.getLogger("prequal.agent")
 
 CONFIDENCE_AUTO = 0.7
+EVIDENCE_FOR_MODEL = 8
 
 # Terms that, if asserted positively in a free-text draft, must be backed by a document on file.
 CLAIM_GUARDS = [
@@ -159,7 +160,10 @@ def answer_with_memory(q: dict, cache: dict, m) -> dict:
     except Exception as exc:
         return dict(draft_text=None, status="needs_review", confidence=None, source="memory",
                     evidence={"items": [], "timeline": []}, agent_note=f"memory unavailable during recall: {type(exc).__name__}")
+    # Recall can return 30+ items. The timeline uses every dated fact; the model sees only the top few,
+    # which keeps prompts small (Groq free-tier token limits) and the draft focused.
     timeline = _timeline(evidence) if q.get("type") == "numeric_by_year" else []
+    evidence = evidence[:EVIDENCE_FOR_MODEL]
     if not evidence:
         return dict(draft_text=None, status="gap", confidence=None, source="memory",
                     evidence={"items": [], "timeline": []}, agent_note="nothing in memory answers this question")

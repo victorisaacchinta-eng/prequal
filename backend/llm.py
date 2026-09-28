@@ -23,7 +23,7 @@ log = logging.getLogger("prequal.llm")
 MOCK = os.getenv("PREQUAL_MOCK", "0") == "1"
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 PRIMARY_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
-FALLBACK_MODEL = os.getenv("GROQ_FALLBACK_MODEL", "qwen/qwen3-32b")
+FALLBACK_MODEL = os.getenv("GROQ_FALLBACK_MODEL", "openai/gpt-oss-20b")
 
 SYSTEM_PROMPT = """You draft answers to vendor pre-qualification questionnaires on behalf of a small interior contractor.
 You are given ONE question and a list of EVIDENCE items recalled from the company's memory, each with an id.
@@ -222,7 +222,7 @@ def draft_with_groq(question: dict, evidence: list[dict]) -> DraftResult:
                         f"Rejected: {exc}. Call the tool again with arguments that match this schema exactly: "
                         f"{json.dumps(TOOLS[0]['function']['parameters'])} or {json.dumps(TOOLS[1]['function']['parameters'])}"},
                 ]
-    return DraftResult(tool="none", attempts=attempts, reason="all models failed")
+    return DraftResult(tool="none", attempts=attempts, model="groq", reason="all models failed (likely rate limited); click Re-draft in a minute")
 
 
 # =============================================================================
