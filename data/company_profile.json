@@ -1,0 +1,157 @@
+{
+  "slug": "northstar-interiors",
+  "legal_name": "M/s Northstar Interiors",
+  "trade_name": "Northstar Interiors",
+  "entity_type": "Proprietorship",
+  "proprietor": "V. Kumar",
+  "incorporation_year": 2013,
+  "registration": "Registered under the Government of Telangana, Shops and Establishments Act, 2013",
+  "registered_address": "Plot 42, Road No. 7, Nagole, Hyderabad, Telangana 500068",
+  "office_address": "Plot 42, Road No. 7, Nagole, Hyderabad, Telangana 500068",
+  "contact_person": "V. Kumar, Proprietor",
+  "contact_email": "office@northstarinteriors.example",
+  "contact_phone": "+91 92466 00000",
+  "website": null,
+  "gstin": "36AAAPN1234Q1Z5",
+  "pan": "AAAPN1234Q",
+  "udyam_registration": null,
+  "msme_status": "Not registered",
+  "cin": null,
+  "iso_9001": false,
+  "iso_14001": false,
+  "ohsas_45001": false,
+  "quality_manual": false,
+  "ehs_policy": false,
+  "pf_registration": "TSHYD1234567000",
+  "esi_registration": "52000123456000001",
+  "bank_name": "State Bank of India",
+  "bank_branch": "Nagole, Hyderabad",
+  "bank_account_type": "Current account",
+  "years_in_business": 13,
+  "proprietor_experience_years": 20,
+  "proprietor_background": "Interior designer, formerly Project Manager at a large interior contracting company for 7 years before founding Northstar in 2013",
+  "service_lines": [
+    "Interior design and execution",
+    "Civil works",
+    "Carpentry and modular furniture (fabrication outsourced to two partner workshops)",
+    "Loose furniture and fixtures",
+    "Electrical works (Class I, A1 licensed electricians)",
+    "False ceiling, POP and painting",
+    "Signage coordination"
+  ],
+  "not_offered": [
+    "Medical gas pipeline systems",
+    "HVAC design (executed through a partner MEP contractor)",
+    "Structural civil works above ground floor slab"
+  ],
+  "employees_total": 32,
+  "employees_breakdown": {
+    "architects_interior_designers": 1,
+    "planning_and_commercial": 1,
+    "project_coordinators": 2,
+    "site_engineers_supervisors": 2,
+    "skilled_technicians": 6,
+    "labour": 20
+  },
+  "consultants": "Two consultant architects on retainer; Class I (A1) licensed electricians; carpentry, POP and civil crews on long-term subcontract",
+  "in_house_factory": false,
+  "modular_furniture_source": "Outsourced to two partner workshops in Hyderabad (Uppal and Jeedimetla)",
+  "equipment": "Site tools, scaffolding for up to 4 m, two utility vehicles, laser levels, power tools for 4 simultaneous sites",
+  "preferred_zones": ["South India"],
+  "states_executed": ["Telangana", "Andhra Pradesh", "Karnataka"],
+  "simultaneous_sites_capacity": 4,
+  "typical_branch_turnaround_days": 21,
+  "turnover_by_fy": {
+    "2022-23": {"amount_inr": 4800000, "label": "Rs 48 lakh"},
+    "2023-24": {"amount_inr": 5900000, "label": "Rs 59 lakh"},
+    "2024-25": {"amount_inr": 5300000, "label": "Rs 53 lakh"}
+  },
+  "turnover_update_for_demo": {
+    "2025-26": {"amount_inr": 7100000, "label": "Rs 71 lakh", "note": "Provisional, retained live during the demo to show the timeline updating"}
+  },
+  "net_worth_inr": 3200000,
+  "largest_single_project_inr": 2100000,
+  "largest_single_project": "Six gold loan branches for Capri Global Housing Finance across Telangana, about 7,000 sq ft in total, executed over 2024-25",
+  "clients": [
+    "Axis Bank",
+    "South Indian Bank",
+    "IIFL Gold Finance",
+    "Muthoot Fincorp",
+    "Capri Global Housing Finance",
+    "Apollo Health and Lifestyle",
+    "Future Generali Insurance",
+    "Exide Life Insurance",
+    "Ratnadeep Super Markets"
+  ],
+  "past_projects": [
+    {
+      "client": "Capri Global Housing Finance",
+      "scope": "Six gold loan branch fit-outs, civil, interior, electrical, loose furniture and signage coordination",
+      "location": "Telangana (Hyderabad, Warangal, Karimnagar, Nizamabad, Khammam, Nalgonda)",
+      "area_sqft": 7000,
+      "value_inr": 2100000,
+      "period": "2024-25",
+      "completion_certificate": true
+    },
+    {
+      "client": "Muthoot Fincorp",
+      "scope": "Four branch refurbishments including counters, strong room finishing coordination, lighting and signage",
+      "location": "Hyderabad and Secunderabad",
+      "area_sqft": 3200,
+      "value_inr": 1150000,
+      "period": "2023-24",
+      "completion_certificate": true
+    },
+    {
+      "client": "IIFL Gold Finance",
+      "scope": "Two new branch fit-outs, 800 sq ft each",
+      "location": "Vijayawada and Guntur, Andhra Pradesh",
+      "area_sqft": 1600,
+      "value_inr": 640000,
+      "period": "2023-24",
+      "completion_certificate": true
+    },
+    {
+      "client": "Axis Bank",
+      "scope": "Branch interior refresh, false ceiling, painting, workstation replacement",
+      "location": "Kukatpally, Hyderabad",
+      "area_sqft": 2400,
+      "value_inr": 900000,
+      "period": "2022-23",
+      "completion_certificate": true
+    },
+    {
+      "client": "Apollo Health and Lifestyle",
+      "scope": "Clinic reception and consulting room interiors",
+      "location": "Bengaluru",
+      "area_sqft": 1800,
+      "value_inr": 720000,
+      "period": "2022-23",
+      "completion_certificate": false
+    },
+    {
+      "client": "Ratnadeep Super Markets",
+      "scope": "Store fixtures and checkout counters for two outlets",
+      "location": "Hyderabad",
+      "area_sqft": 5000,
+      "value_inr": 1300000,
+      "period": "2021-22",
+      "completion_certificate": true
+    }
+  ],
+  "ongoing_projects": [
+    {
+      "client": "South Indian Bank",
+      "scope": "Branch relocation fit-out",
+      "location": "Madhapur, Hyderabad",
+      "area_sqft": 1900,
+      "expected_completion": "2026-11"
+    }
+  ],
+  "litigation": "None pending or in the last five years",
+  "blacklisting": "Never blacklisted or debarred by any client, bank or government body",
+  "safety_record": "No reportable accidents in the last five years",
+  "statutory_compliance": "PF and ESI registrations active; GST returns filed monthly",
+  "insurance": "Contractor's all-risk policy taken per project on client request; no standing workmen's compensation policy",
+  "notes_for_agent": "The company does not hold ISO 9001, ISO 14001, OHSAS 45001, a written quality manual, a written EHS policy, an Udyam (MSME) registration, or a CIN (it is a proprietorship, not a company). Questions about these must be answered 'No' or flagged, never invented."
+}

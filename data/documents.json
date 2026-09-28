@@ -1,0 +1,155 @@
+[
+  {
+    "key": "registration_certificate",
+    "name": "Shops and Establishments registration certificate (Telangana)",
+    "file": "docs/01_registration_certificate.pdf",
+    "status": "on_file",
+    "issued": "2013-06-14",
+    "valid_until": null,
+    "satisfies": ["certificate of incorporation", "registration certificate", "proof of entity"]
+  },
+  {
+    "key": "gst_certificate",
+    "name": "GST registration certificate",
+    "file": "docs/02_gst_certificate.pdf",
+    "status": "on_file",
+    "issued": "2017-07-01",
+    "valid_until": null,
+    "satisfies": ["GST certificate", "GSTIN proof"]
+  },
+  {
+    "key": "pan_card",
+    "name": "PAN card of the proprietor",
+    "file": "docs/03_pan_card.pdf",
+    "status": "on_file",
+    "issued": null,
+    "valid_until": null,
+    "satisfies": ["PAN", "PAN card copy"]
+  },
+  {
+    "key": "audited_financials_2022_23",
+    "name": "Audited financial statements FY 2022-23",
+    "file": "docs/04_financials_2022_23.pdf",
+    "status": "on_file",
+    "issued": "2023-09-20",
+    "valid_until": null,
+    "satisfies": ["audited financials", "balance sheet", "profit and loss"]
+  },
+  {
+    "key": "audited_financials_2023_24",
+    "name": "Audited financial statements FY 2023-24",
+    "file": "docs/04_financials_2023_24.pdf",
+    "status": "on_file",
+    "issued": "2024-09-18",
+    "valid_until": null,
+    "satisfies": ["audited financials", "balance sheet", "profit and loss"]
+  },
+  {
+    "key": "audited_financials_2024_25",
+    "name": "Audited financial statements FY 2024-25",
+    "file": "docs/04_financials_2024_25.pdf",
+    "status": "on_file",
+    "issued": "2025-09-22",
+    "valid_until": null,
+    "satisfies": ["audited financials", "balance sheet", "profit and loss"]
+  },
+  {
+    "key": "bank_solvency_letter",
+    "name": "Bank solvency certificate, State Bank of India, Nagole branch",
+    "file": "docs/05_bank_solvency.pdf",
+    "status": "on_file",
+    "issued": "2025-11-03",
+    "valid_until": "2026-11-02",
+    "satisfies": ["bank solvency certificate", "banker's certificate", "solvency letter"]
+  },
+  {
+    "key": "completion_capri",
+    "name": "Work completion certificate, Capri Global Housing Finance, six branches",
+    "file": "docs/06_completion_capri_global.pdf",
+    "status": "on_file",
+    "issued": "2025-03-30",
+    "valid_until": null,
+    "satisfies": ["work completion certificate", "client certificate", "experience certificate"]
+  },
+  {
+    "key": "completion_muthoot",
+    "name": "Work completion certificate, Muthoot Fincorp, four branches",
+    "file": "docs/06_completion_muthoot.pdf",
+    "status": "on_file",
+    "issued": "2024-04-12",
+    "valid_until": null,
+    "satisfies": ["work completion certificate", "client certificate", "experience certificate"]
+  },
+  {
+    "key": "completion_iifl",
+    "name": "Work completion certificate, IIFL Gold Finance, two branches",
+    "file": "docs/06_completion_iifl.pdf",
+    "status": "on_file",
+    "issued": "2024-02-27",
+    "valid_until": null,
+    "satisfies": ["work completion certificate", "client certificate", "experience certificate"]
+  },
+  {
+    "key": "pf_registration",
+    "name": "EPFO registration certificate",
+    "file": "docs/07_pf_registration.pdf",
+    "status": "on_file",
+    "issued": "2019-01-10",
+    "valid_until": null,
+    "satisfies": ["PF registration", "EPF certificate"]
+  },
+  {
+    "key": "esi_registration",
+    "name": "ESIC registration certificate",
+    "file": "docs/07_esi_registration.pdf",
+    "status": "on_file",
+    "issued": "2019-01-10",
+    "valid_until": null,
+    "satisfies": ["ESI registration", "ESIC certificate"]
+  },
+  {
+    "key": "client_reference_letters",
+    "name": "Client reference letters, Axis Bank Kukatpally and South Indian Bank",
+    "file": "docs/08_client_references.pdf",
+    "status": "on_file",
+    "issued": "2025-06-15",
+    "valid_until": null,
+    "satisfies": ["client references", "reference letters"]
+  },
+  {
+    "key": "iso_9001",
+    "name": "ISO 9001 certificate",
+    "file": null,
+    "status": "not_held",
+    "issued": null,
+    "valid_until": null,
+    "satisfies": ["ISO 9001", "quality certification"]
+  },
+  {
+    "key": "ehs_policy",
+    "name": "Environment, health and safety policy",
+    "file": null,
+    "status": "not_held",
+    "issued": null,
+    "valid_until": null,
+    "satisfies": ["EHS policy", "HSE policy", "safety policy"]
+  },
+  {
+    "key": "udyam_certificate",
+    "name": "Udyam (MSME) registration certificate",
+    "file": null,
+    "status": "not_held",
+    "issued": null,
+    "valid_until": null,
+    "satisfies": ["Udyam certificate", "MSME certificate"]
+  },
+  {
+    "key": "quality_manual",
+    "name": "Quality manual",
+    "file": null,
+    "status": "not_held",
+    "issued": null,
+    "valid_until": null,
+    "satisfies": ["quality manual", "QA manual"]
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "client": "Capri Global Housing Finance",
+    "client_slug": "capri-global",
+    "questionnaire": "Vendor Empanelment Questionnaire, Gold Loan Branch Fit-outs, Telangana",
+    "answered_on": "2024-06-10",
+    "outcome": "Empanelled. Awarded six branches over 2024-25. All six completed and certified in March 2025.",
+    "answers": [
+      {"question": "Describe your experience with branch fit-outs for banks or NBFCs", "answer": "Northstar Interiors has executed branch interiors for Axis Bank (Kukatpally, 2,400 sq ft refresh), IIFL Gold Finance (two new branches in Vijayawada and Guntur, 800 sq ft each) and Muthoot Fincorp (four refurbishments in Hyderabad and Secunderabad). Scope covered civil, interior, electrical, loose furniture and signage coordination. Completion certificates are available for all three clients."},
+      {"question": "What is your typical turnaround time for a 750 sq ft branch?", "answer": "21 working days from site handover to completion, including electrical and signage, assuming client approvals on drawings within 3 days of submission."},
+      {"question": "How many sites can you run simultaneously?", "answer": "Four sites in parallel with the current team of two site engineers, two project coordinators and six skilled technicians, supported by long-term subcontract crews."},
+      {"question": "Do you have an in-house factory for modular furniture?", "answer": "No. Modular furniture is fabricated by two partner workshops in Uppal and Jeedimetla, Hyderabad, under our drawings and quality checks. Loose furniture is procured or fabricated to specification."},
+      {"question": "Which geographical zones can you serve?", "answer": "South India. We have executed sites in Telangana, Andhra Pradesh and Karnataka and prefer to take one zone at a time to keep supervision tight."},
+      {"question": "Do you hold ISO 9001 certification?", "answer": "No. We follow a written site checklist and a two-stage handover inspection but are not ISO certified."},
+      {"question": "Do you have a documented EHS policy?", "answer": "No written EHS policy. Site safety follows the client's site rules; PPE is mandatory on our sites and there have been no reportable accidents in the last five years."},
+      {"question": "Provide details of your largest single project", "answer": "Rs 13 lakh, store fixtures and checkout counters for two Ratnadeep Super Markets outlets in Hyderabad, 5,000 sq ft, 2021-22. Completion certificate available."},
+      {"question": "Have you ever been blacklisted or debarred?", "answer": "Never blacklisted or debarred by any client, bank or government body."},
+      {"question": "List your statutory registrations", "answer": "GSTIN 36AAAPN1234Q1Z5; PAN AAAPN1234Q; EPFO registration TSHYD1234567000; ESIC registration 52000123456000001. Registered under the Telangana Shops and Establishments Act since 2013. Not registered under Udyam."},
+      {"question": "Name and experience of the proprietor", "answer": "V. Kumar, interior designer with 20 years in the trade, formerly Project Manager at a large interior contracting company for 7 years before founding Northstar Interiors in 2013."},
+      {"question": "Who will be the single point of contact for this account?", "answer": "V. Kumar, Proprietor, office@northstarinteriors.example, +91 92466 00000."}
+    ]
+  },
+  {
+    "client": "Muthoot Fincorp",
+    "client_slug": "muthoot-fincorp",
+    "questionnaire": "Contractor Registration Form, Branch Refurbishment, Hyderabad Region",
+    "answered_on": "2023-05-22",
+    "outcome": "Registered. Awarded four branch refurbishments in 2023-24, completed and certified April 2024.",
+    "answers": [
+      {"question": "Years in business and nature of entity", "answer": "Proprietorship founded in 2013 and registered under the Telangana Shops and Establishments Act. Ten years in business at the time of this form."},
+      {"question": "Can you execute refurbishment while the branch remains operational?", "answer": "Yes. For the Axis Bank Kukatpally refresh the branch stayed open throughout; we worked in two phases after banking hours and on Sundays, with dust barriers and a daily clean-up before opening."},
+      {"question": "Describe your electrical capability", "answer": "Class I (A1) licensed electricians on long-term subcontract. We handle internal wiring, DB replacement, lighting, UPS wiring to counters and CCTV conduiting. HT work and DG installation are excluded."},
+      {"question": "Describe your team", "answer": "32 people: one architect and interior designer, one planning and commercial lead, two project coordinators, two site engineers, six skilled technicians and about twenty labour, plus two consultant architects on retainer."},
+      {"question": "Provide bank details for payment", "answer": "State Bank of India, Nagole branch, Hyderabad. Current account. Account number and IFSC shared separately on the bank mandate form."},
+      {"question": "Annual turnover for the last three financial years", "answer": "FY 2020-21 Rs 31 lakh; FY 2021-22 Rs 42 lakh; FY 2022-23 Rs 48 lakh. Audited statements attached."},
+      {"question": "Do you provide a defect liability period?", "answer": "Yes, 12 months from handover on workmanship and materials supplied by us, excluding client-supplied items."},
+      {"question": "Any pending litigation?", "answer": "None pending, and none in the last five years."},
+      {"question": "What insurance cover do you carry?", "answer": "Contractor's all-risk policy taken per project when the client requests it. No standing workmen's compensation policy at present."}
+    ]
+  }
+]

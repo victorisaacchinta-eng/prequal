@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prequal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141311'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='600' fill='%23f4f1ea'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <a class="wordmark" href="/" style="text-decoration:none;color:inherit">Prequal</a>
+    <span class="tag">Vendor questionnaires, answered from memory</span>
+  </div>
+  <div class="figure" aria-live="polite">
+    <span class="figure-num" id="figure-num">0 / 0</span>
+    <span class="figure-cap" id="figure-cap">answered from memory</span>
+  </div>
+  <div class="memstate" id="memstate">
+    <span class="dot" id="memdot"></span>
+    <span id="memlabel">checking memory…</span>
+  </div>
+  <div class="topactions">
+    <button id="btn-fresh" class="ghost" title="Clear the memory bank and this questionnaire's answers">Fresh agent</button>
+    <button id="btn-ingest" class="primary" title="Retain the company profile, documents and past answers into Hindsight">Ingest company memory</button>
+  </div>
+</header>
+
+<main class="grid">
+  <!-- LEFT: questionnaires + questions -->
+  <section class="col col-left">
+    <div class="panel-head">
+      <label class="lbl" for="qsel">Questionnaire</label>
+      <select id="qsel"></select>
+      <div class="qmeta" id="qmeta"></div>
+    </div>
+    <div class="runbar">
+      <button id="btn-run" class="primary wide">Run agent</button>
+      <div class="progress" id="progress"><div class="bar" id="bar"></div></div>
+      <div class="counts" id="counts"></div>
+    </div>
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">All</button>
+      <button data-f="auto">Auto</button>
+      <button data-f="needs_review">Review</button>
+      <button data-f="gap">Gaps</button>
+      <button data-f="approved">Approved</button>
+    </div>
+    <ol class="qlist" id="qlist"></ol>
+  </section>
+
+  <!-- CENTRE: the selected question -->
+  <section class="col col-mid" id="detail">
+    <div class="empty" id="detail-empty">
+      <p class="lede">Pick a questionnaire, run the agent, then click a question.</p>
+      <p>Before ingesting, the agent knows nothing about the company and every answer needs you. After ingesting, it answers from memory and shows the evidence it used. Every approval becomes a new memory.</p>
+    </div>
+    <div class="qcard hidden" id="qcard">
+      <svg class="threads" id="threads" aria-hidden="true"></svg>
+      <div class="qhead">
+        <span class="section" id="d-section"></span>
+        <span class="ordinal" id="d-ordinal"></span>
+      </div>
+      <h2 class="qtext" id="d-text"></h2>
+      <div class="statusline">
+        <span class="pill" id="d-status"></span>
+        <span class="conf" id="d-conf"></span>
+        <span class="src" id="d-source"></span>
+      </div>
+      <p class="note" id="d-note"></p>
+
+      <label class="lbl" for="d-answer">Answer</label>
+      <div class="answer-wrap" id="answer-wrap">
+        <textarea id="d-answer" rows="5" spellcheck="true"></textarea>
+        <div class="stamp" id="stamp" aria-hidden="true"><b>Approved</b><span>retained to memory</span></div>
+      </div>
+      <div class="rowactions">
+        <button id="btn-approve" class="primary">Approve</button>
+        <button id="btn-gap" class="ghost">Mark as gap</button>
+        <button id="btn-reopen" class="ghost">Re-draft</button>
+        <input id="d-reason" type="text" placeholder="Why did you change it? (becomes a memory)">
+      </div>
+
+      <div class="timeline hidden" id="d-timeline">
+        <label class="lbl">Timeline from memory</label>
+        <ol id="d-timeline-list"></ol>
+      </div>
+
+      <div class="evidence">
+        <label class="lbl">Evidence recalled from Hindsight <span id="d-evcount"></span></label>
+        <ul id="d-evidence"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: memory -->
+  <aside class="col col-right">
+    <div class="panel-head">
+      <span class="lbl">Memory bank</span>
+      <div class="bankmeta" id="bankmeta"></div>
+    </div>
+    <div class="brief">
+      <div class="brief-head">
+        <span class="lbl">Brief before answering</span>
+        <button id="btn-brief" class="ghost small">reflect()</button>
+      </div>
+      <p id="brief-text" class="brief-text">Not generated yet.</p>
+    </div>
+    <div class="live">
+      <span class="lbl">Retain a fact live</span>
+      <form id="retain-form">
+        <textarea id="retain-content" rows="2" placeholder="e.g. Turnover for FY 2025-26 was Rs 71 lakh (provisional)."></textarea>
+        <div class="liverow">
+          <input id="retain-date" type="date" title="When this fact became true">
+          <button type="submit" class="ghost small">retain()</button>
+        </div>
+      </form>
+    </div>
+    <div class="log-head">
+      <span class="lbl">Memory log</span>
+      <a href="#" id="btn-export-csv" class="link">export CSV</a>
+      <a href="#" id="btn-export-json" class="link">JSON</a>
+    </div>
+    <ul class="log" id="log"></ul>
+  </aside>
+</main>
+
+<div class="toast hidden" id="toast"></div>
+<script src="/static/vendor/gsap.min.js"></script>
+<script src="/static/vendor/SplitText.min.js"></script>
+<script src="/static/vendor/DrawSVGPlugin.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
