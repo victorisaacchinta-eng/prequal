@@ -1,9 +1,7 @@
-/* Prequal review screen.
-   Editorial system: serif-driven, zero radius, one accent, hard offset shadows, no pills.
-   Tokens first; nothing below uses a raw value that a token covers. */
+/* Prequal review screen. Use the tokens below rather than raw values. */
 
 :root {
-  /* colour: paper edition */
+  /* colour */
   --paper: #f3efe6;
   --paper-2: #e9e4d8;
   --paper-3: #ddd6c6;
@@ -12,11 +10,11 @@
   --ink-3: #6f6a60;            /* 5.0:1 on --paper, clears AA for small text */
   --rule: #c9c1ae;
   --rule-strong: #141311;
-  --accent: #e3401a;           /* vermilion: memory events, provenance threads, the headline figure. Marks and large type only */
+  --accent: #e3401a;           /* memory events, provenance threads, the headline figure. Too light for small text, use --accent-ink */
   --accent-ink: #b8300f;       /* accent for small text: 5.2:1 on paper */
   --accent-tint: #f8d9cc;
 
-  /* status: meaning only, never decoration */
+  /* status colours */
   --auto: #1d5c3e;
   --review: #8a4b00;
   --gap: #b8300f;
@@ -69,7 +67,7 @@ p { text-wrap: pretty; }
 button, input, select, textarea { font: inherit; color: inherit; }
 .hidden { display: none !important; }
 
-/* labels: the small-caps mono voice of the publication's furniture */
+/* labels */
 .lbl {
   display: block; margin: 0 0 var(--s-2);
   font-family: var(--mono); font-size: var(--t-label); line-height: var(--lh-ui);
@@ -78,7 +76,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .link { font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .link:hover { color: var(--accent); }
 
-/* buttons: rectangles that lift with a hard shadow */
+/* buttons */
 button {
   cursor: pointer; background: var(--paper); border: 1px solid var(--ink);
   padding: var(--s-2) var(--s-4); min-height: 40px;
@@ -98,7 +96,7 @@ button.primary:disabled { background: var(--paper-3); color: var(--ink-3); }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 @media (forced-colors: active) { :focus-visible { outline-color: CanvasText; } }
 
-/* ---------- masthead ---------- */
+/* masthead */
 .top {
   display: grid; grid-template-columns: auto auto 1fr auto; gap: var(--l-1); align-items: center;
   padding: var(--s-5) var(--l-1) var(--s-4);
@@ -109,7 +107,7 @@ button.primary:disabled { background: var(--paper-3); color: var(--ink-3); }
 .wordmark { font-family: var(--display); font-weight: 600; font-size: var(--t-masthead); line-height: 1; letter-spacing: -0.02em; font-variation-settings: "opsz" 72; }
 .tag { white-space: nowrap; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
 
-/* the headline figure: answered from memory */
+/* headline figure: count answered from memory */
 .figure { display: flex; align-items: baseline; gap: var(--s-3); white-space: nowrap; }
 .figure-num { font-family: var(--display); font-size: var(--t-figure); line-height: 1; font-weight: 500; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -0.02em; transition: color var(--d-system) var(--ease-standard); }
 .figure-num.up { color: var(--accent); }
@@ -121,7 +119,7 @@ button.primary:disabled { background: var(--paper-3); color: var(--ink-3); }
 .dot.off { background: var(--accent); }
 .topactions { display: flex; gap: var(--s-2); white-space: nowrap; }
 
-/* ---------- three-column page ---------- */
+/* three-column page */
 body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 .grid { display: grid; grid-template-columns: 340px minmax(0, 1fr) 360px; flex: 1 1 auto; min-height: 0; overflow: hidden; }
 .col { padding: var(--l-1); min-width: 0; min-height: 0; overflow-y: auto; }
@@ -146,7 +144,7 @@ body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 .filters button:hover { transform: none; box-shadow: none; background: var(--paper-2); }
 .filters button.on { background: var(--ink); color: var(--paper); }
 
-/* question list: a numbered index, not a card stack */
+/* question list */
 .qlist { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; border-top: var(--heavy); }
 .qlist li { display: grid; grid-template-columns: 26px 1fr; gap: var(--s-2); padding: var(--s-3) var(--s-2) var(--s-3) var(--s-3); border-bottom: var(--hair); cursor: pointer; position: relative; transition: background-color var(--d-fade) var(--ease-standard); }
 .qlist li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--status-color, transparent); }
@@ -158,7 +156,7 @@ body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 .qlist li.fresh { animation: settle var(--d-system) var(--ease-enter); }
 @keyframes settle { from { background: var(--accent-tint); } to { background: transparent; } }
 
-/* status: a square marker and a small-caps word, never a pill */
+/* status: square marker plus a small-caps word */
 .pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; color: var(--status-color, var(--pending)); }
 .pill::before { content: ""; width: 7px; height: 7px; background: currentColor; }
 .auto { --status-color: var(--auto); }
@@ -168,7 +166,7 @@ body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 .pending { --status-color: var(--pending); }
 .pill.approved::before { background: transparent; border: 1.5px solid currentColor; }
 
-/* ---------- the question ---------- */
+/* selected question */
 .empty { max-width: var(--measure); color: var(--ink-2); }
 .empty .lede { font-family: var(--display); font-size: 28px; line-height: 1.2; color: var(--ink); margin: 0 0 var(--s-4); letter-spacing: -0.01em; }
 .qhead { display: flex; justify-content: space-between; padding-bottom: var(--s-2); border-bottom: var(--hair); font-family: var(--mono); font-size: var(--t-label); color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -203,7 +201,7 @@ textarea:focus, input:focus { outline: 2px solid var(--ink); outline-offset: 3px
 .evidence .kind { color: var(--ink); }
 .evidence .kind::before { content: "["; } .evidence .kind::after { content: "]"; }
 
-/* ---------- memory column ---------- */
+/* memory column */
 .bankmeta { font-family: var(--mono); font-size: 12px; color: var(--ink-2); line-height: 1.6; }
 .brief-head, .log-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
 .brief-head .lbl, .log-head .lbl { margin: 0; flex: 1; }
@@ -242,7 +240,7 @@ textarea:focus, input:focus { outline: 2px solid var(--ink); outline-offset: 3px
 }
 
 
-/* ---------- provenance threads: the answer, tied by a drawn line to each memory it cited ---------- */
+/* provenance threads: lines from the answer to each memory it cited */
 .qcard { position: relative; }
 .threads { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
 .thread { fill: none; stroke: var(--accent); stroke-width: 1.5; }
@@ -250,7 +248,7 @@ textarea:focus, input:focus { outline: 2px solid var(--ink); outline-offset: 3px
 .evidence li.cited { position: relative; }
 .col-mid { padding-left: 64px; }
 
-/* ---------- the approval stamp: a tactile confirmation that the answer became a memory ---------- */
+/* approval stamp, shown when an approved answer is retained */
 .answer-wrap { position: relative; }
 .stamp {
   position: absolute; right: var(--s-5); bottom: var(--s-4); pointer-events: none; opacity: 0;
@@ -263,13 +261,13 @@ textarea:focus, input:focus { outline: 2px solid var(--ink); outline-offset: 3px
 .stamp b { font-size: 20px; font-weight: 500; line-height: 1; }
 .stamp span { font-size: 9.5px; }
 
-/* the headline figure: big, tabular, turns vermilion when memory adds answers */
+/* headline figure turns vermilion when memory adds answers */
 .figure-num { font-variation-settings: "opsz" 72; }
 .figure-num.up { color: var(--accent); }
 
 @media (max-width: 1100px) { .col-mid { padding-left: 40px; } }
 
-/* masthead collapses cleanly on narrower laptops and zoomed windows */
+/* masthead collapses on narrower laptops and zoomed windows */
 @media (max-width: 1360px) {
   .top { grid-template-columns: auto auto 1fr; }
   .memstate { grid-column: 1 / -1; grid-row: 2; justify-self: start; max-width: none; }

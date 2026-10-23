@@ -1,4 +1,4 @@
-"""Hindsight smoke test. Run this once in prep, before writing any app code.
+"""Hindsight smoke test. Run it once before starting the app to check the key and the SDK shape.
 
     pip install hindsight-client python-dotenv
     export HINDSIGHT_API_KEY=...        # from https://ui.hindsight.vectorize.io
@@ -12,9 +12,9 @@ What it checks, in order:
      (we need occurred_start / occurred_end for the turnover timeline)
   5. reflect answers a question over them
 
-Paste the printed output into the team chat. If step 4 does not show dates,
-or shows only one consolidated value, tell Victor: the contradiction beat
-needs a different recall setting (types=["world"] without observations).
+If step 4 does not show dates, or shows only one consolidated value, the
+turnover timeline needs a different recall setting (types=["world"] without
+observations).
 """
 
 import os

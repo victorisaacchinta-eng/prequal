@@ -83,8 +83,6 @@ def init_db() -> None:
         conn.executescript(SCHEMA)
 
 
-# ---------- questionnaires ----------
-
 def upsert_questionnaire(q: dict) -> int:
     """Insert a questionnaire and its questions. Re-uploading the same slug replaces it."""
     with tx() as conn:
@@ -195,8 +193,6 @@ def set_status(qid: int, status: str, brief_text: str | None = None) -> None:
             conn.execute("UPDATE questionnaires SET status = ? WHERE id = ?", (status, qid))
 
 
-# ---------- answers ----------
-
 def write_draft(question_id: int, *, draft_text: str | None, status: str, confidence: float | None,
                 source: str, evidence: dict, agent_note: str | None) -> None:
     with tx() as conn:
@@ -238,8 +234,6 @@ def reset_answers(qid: int) -> None:
         )
         conn.execute("UPDATE questionnaires SET status = 'loaded', brief_text = NULL WHERE id = ?", (qid,))
 
-
-# ---------- retain retry queue ----------
 
 def queue_retain(payload: dict) -> None:
     with tx() as conn:

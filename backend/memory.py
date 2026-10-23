@@ -81,10 +81,6 @@ def _norm(r) -> dict:
     }
 
 
-# =============================================================================
-# Real client
-# =============================================================================
-
 class HindsightMemory:
     def __init__(self) -> None:
         from hindsight_client import Hindsight  # imported lazily so mock mode needs no install
@@ -93,7 +89,6 @@ class HindsightMemory:
         self.bank_id = BANK_ID
         self._bank_ready = False
 
-    # ---- bank ----
     def ensure_bank(self, company_name: str) -> None:
         if self._bank_ready:
             return
@@ -132,7 +127,6 @@ class HindsightMemory:
                 log.warning("directive %s not set: %s", name, exc)
                 _log_event("directive", f"{name}: skipped ({type(exc).__name__})", (time.time() - t0) * 1000, ok=False)
 
-    # ---- retain ----
     def retain(self, content: str, *, context: str | None = None, timestamp: datetime | None = None,
                tags: list[str] | None = None, document_id: str | None = None) -> dict:
         t0 = time.time()
@@ -184,7 +178,6 @@ class HindsightMemory:
             n += 1
         return {"ok": True, "count": n}
 
-    # ---- recall ----
     def recall(self, query: str, *, types: list[str] | None = None, tags: list[str] | None = None,
                budget: str = "mid", max_tokens: int = 1500) -> list[dict]:
         t0 = time.time()
@@ -204,7 +197,6 @@ class HindsightMemory:
             _log_event("recall", f"FAILED {type(exc).__name__}: {query}", (time.time() - t0) * 1000, ok=False)
             raise
 
-    # ---- reflect ----
     def reflect(self, query: str, *, budget: str = "low", context: str | None = None) -> str:
         t0 = time.time()
         kwargs = dict(bank_id=self.bank_id, query=query, budget=budget)
@@ -219,7 +211,6 @@ class HindsightMemory:
             _log_event("reflect", f"FAILED {type(exc).__name__}: {query}", (time.time() - t0) * 1000, ok=False)
             raise
 
-    # ---- reset ----
     def reset(self) -> dict:
         """Clear every memory in the bank (the 'fresh agent' demo state). Bank config and directives stay."""
         t0 = time.time()
@@ -233,10 +224,7 @@ class HindsightMemory:
             raise
 
 
-# =============================================================================
-# Mock (offline development only)
-# =============================================================================
-
+# mock memory, for offline development only
 _WORD = re.compile(r"[a-z0-9]+")
 _STOP = {"the", "a", "an", "of", "for", "and", "or", "to", "in", "on", "with", "your", "you", "do", "does",
          "is", "are", "any", "if", "by", "at", "as", "be", "it", "its", "this", "that", "which", "what",
@@ -316,8 +304,6 @@ class MockMemory:
         _log_event("reset", f"[mock] bank {self.bank_id} cleared", 0.1)
         return {"ok": True}
 
-
-# =============================================================================
 
 _memory = None
 _memory_lock = threading.Lock()

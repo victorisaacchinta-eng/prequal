@@ -237,7 +237,7 @@ details[open] .plus::after{transform:scaleY(0)}
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const C = { paper:[.953,.937,.902], ink:[.078,.075,.067], ver:[.89,.251,.102], ochre:[.83,.62,.29] };
 
-  /* ---------- split the headline into per-character spans ---------- */
+  /* split the headline into per-character spans */
   const h1 = document.querySelector("[data-split]");
   let i = 0;
   const splitNode = (node) => {
@@ -258,7 +258,7 @@ details[open] .plus::after{transform:scaleY(0)}
   h1.setAttribute("aria-label", h1.textContent.replace(/\s+/g, " ").trim());
   splitNode(h1);
 
-  /* ---------- intro stage ---------- */
+  /* intro stage */
   const intro = document.getElementById("intro");
   if (REDUCED) { intro.remove(); h1.classList.add("go"); }
   else {
@@ -267,7 +267,7 @@ details[open] .plus::after{transform:scaleY(0)}
     setTimeout(() => { intro.classList.add("gone"); h1.classList.add("go"); }, 2050);
   }
 
-  /* ---------- hero: three overprinted ribbons (WebGL, canvas-2D fallback) ---------- */
+  /* hero ribbons: WebGL, with a canvas-2D fallback */
   const cv = document.getElementById("ribbons");
   const dpr = Math.min(devicePixelRatio || 1, 2);
   const size = (c) => { const r = c.getBoundingClientRect(); c.width = Math.max(1, r.width * dpr); c.height = Math.max(1, r.height * dpr); };
@@ -316,7 +316,7 @@ details[open] .plus::after{transform:scaleY(0)}
     };
   }
 
-  /* ---------- per-tile canvases: each illustrates its own stage ---------- */
+  /* per-tile canvases, one animation per pipeline stage */
   const tiles = [...document.querySelectorAll("[data-tile]")].map((c) => ({ c, x: c.getContext("2d"), k: c.dataset.tile }));
   const ink = "#141311", ver = "#e3401a", mute = "rgba(20,19,17,.18)";
   const tileDraw = {
@@ -351,7 +351,7 @@ details[open] .plus::after{transform:scaleY(0)}
     },
   };
 
-  /* ---------- memory field: 72 memories, one recalled run ---------- */
+  /* memory field: 72 memories, one recalled run */
   const fc = document.getElementById("field"), fx = fc.getContext("2d"), readout = document.getElementById("readout");
   const N = 72, S0 = Math.floor(N * .16), S1 = Math.floor(N * .44);
   const drawField = (t) => {
@@ -372,7 +372,7 @@ details[open] .plus::after{transform:scaleY(0)}
     readout.textContent = `recall · ${S1 - S0 + 1} of ${N} memories cited`;
   };
 
-  /* ---------- sizing + loop, gated on visibility ---------- */
+  /* sizing and the draw loop, only while visible */
   const resize = () => { size(cv); tiles.forEach((o) => size(o.c)); size(fc); };
   addEventListener("resize", resize); resize();
   const visible = new Set();
@@ -387,7 +387,7 @@ details[open] .plus::after{transform:scaleY(0)}
   };
   if (REDUCED) { visible.add(cv); visible.add(fc); tiles.forEach((o) => visible.add(o.c)); frame(4000); } else requestAnimationFrame(frame);
 
-  /* ---------- scroll reveals ---------- */
+  /* scroll reveals */
   const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("on"); rio.unobserve(e.target); } }), { threshold: .16, rootMargin: "0px 0px -8% 0px" });
   document.querySelectorAll(".rv").forEach((el) => REDUCED ? el.classList.add("on") : rio.observe(el));
 })();
