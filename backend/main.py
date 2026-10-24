@@ -56,6 +56,10 @@ def health():
             "company": cache.get("company"), "ingested_at": cache.get("ingested_at")}
 
 
+# ---------------------------------------------------------------------------
+# Memory
+# ---------------------------------------------------------------------------
+
 @app.post("/api/ingest")
 async def ingest():
     try:
@@ -120,6 +124,10 @@ async def memory_flush():
     n = await run_in_threadpool(agent.flush_pending_retains)
     return {"ok": True, "retried": n}
 
+
+# ---------------------------------------------------------------------------
+# Questionnaires
+# ---------------------------------------------------------------------------
 
 @app.get("/api/questionnaires")
 def questionnaires():
@@ -232,6 +240,10 @@ def export(qid: int, format: str = "json"):
     return JSONResponse({"questionnaire": {k: qn[k] for k in ("id", "slug", "client", "title", "received_on", "due_on")}, "answers": rows},
                         headers={"Content-Disposition": f"attachment; filename={fname}.json"})
 
+
+# ---------------------------------------------------------------------------
+# Review
+# ---------------------------------------------------------------------------
 
 class ReviewBody(BaseModel):
     action: str = Field(pattern="^(approve|edit|gap|reopen)$")

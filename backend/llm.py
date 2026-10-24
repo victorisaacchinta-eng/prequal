@@ -133,6 +133,10 @@ def _parse_tool_call(name: str, arguments: str) -> DraftResult:
     raise ValueError(f"unknown tool {name}")
 
 
+# =============================================================================
+# Groq
+# =============================================================================
+
 _groq_client = None
 
 
@@ -221,7 +225,10 @@ def draft_with_groq(question: dict, evidence: list[dict]) -> DraftResult:
     return DraftResult(tool="none", attempts=attempts, model="groq", reason="all models failed (likely rate limited); click Re-draft in a minute")
 
 
-# mock drafter, for offline development only
+# =============================================================================
+# Mock drafter (offline development only)
+# =============================================================================
+
 _WORD = re.compile(r"[a-z0-9]+")
 
 

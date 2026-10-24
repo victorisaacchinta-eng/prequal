@@ -97,7 +97,7 @@ hold, so it refuses to claim them.
 </td>
 <td valign="top">
 
-**Empty state**<br>
+**Honest empty state**<br>
 <sub>No memory, no answers. A fresh agent sends every question to review instead of filling the silence.</sub>
 
 </td>

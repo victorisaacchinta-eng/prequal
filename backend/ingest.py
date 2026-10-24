@@ -5,7 +5,7 @@ Two outputs:
      experience facts for past answers and outcomes), tagged and timestamped.
   2. A small local cache (.prequal_cache.json) with the exact-match fields map and the
      document inventory, used by the deterministic layer. It is written only by ingest
-     and deleted by reset, so the "fresh agent" state is empty.
+     and deleted by reset, so the "fresh agent" state is truly empty.
 """
 
 import json
@@ -45,7 +45,7 @@ def clear_cache() -> None:
 
 
 def build_fields(p: dict) -> dict:
-    """Exact-answer fields. A None value means 'not applicable' and gets a canned answer."""
+    """Exact-answer fields. A None value means 'not applicable' and gets a canned honest answer."""
     nw = p.get("net_worth_inr")
     fields = {
         "legal_name": p["legal_name"],

@@ -1,6 +1,6 @@
 """The answer loop: classify, look up, recall, draft, guardrails.
 
-The LLM is only called for questions that need judgment
+Automation before AI. The LLM is only called for questions that need judgment
 (free_text, numeric_by_year). Exact fields and document checks are deterministic.
 The guardrails run after the model and have the final say.
 """
@@ -33,6 +33,10 @@ NEGATION = re.compile(r"\b(not|no|never|without|neither|nor|don't|do not|does no
 def _company_name(cache: dict) -> str:
     return (cache.get("company") or {}).get("name") or "the company"
 
+
+# ---------------------------------------------------------------------------
+# Deterministic answers
+# ---------------------------------------------------------------------------
 
 def answer_field(q: dict, cache: dict) -> dict | None:
     fields = cache.get("fields") or {}
@@ -91,6 +95,10 @@ def answer_document(q: dict, cache: dict, m) -> dict | None:
                 evidence={"items": items, "timeline": []},
                 agent_note=f"'{doc['name']}' is not on file. The agent will not claim it. Decide whether to answer No, or obtain the document.")
 
+
+# ---------------------------------------------------------------------------
+# Memory-backed answers
+# ---------------------------------------------------------------------------
 
 def _timeline(items: list[dict]) -> list[dict]:
     dated = [e for e in items if e.get("occurred_start")]
@@ -175,6 +183,10 @@ def answer_with_memory(q: dict, cache: dict, m) -> dict:
         agent_note=verdict["agent_note"],
     )
 
+
+# ---------------------------------------------------------------------------
+# Orchestration
+# ---------------------------------------------------------------------------
 
 def answer_question(q: dict, cache: dict | None = None) -> dict:
     cache = cache if cache is not None else load_cache()

@@ -3,7 +3,7 @@
 const $ = (id) => document.getElementById(id);
 const state = { questionnaires: [], current: null, selectedId: null, filter: "all", running: false, logSeen: new Set() };
 
-/* motion (GSAP). All of it is skipped under reduced motion. */
+/* ---------- motion layer (GSAP). Every animation explains a state change; all of it is skipped under reduced motion. ---------- */
 const G = window.gsap;
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const MOTION = !!G && !REDUCED;
