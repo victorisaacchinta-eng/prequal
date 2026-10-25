@@ -3,12 +3,12 @@
 </p>
 
 <p align="center">
-  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-E3401A?style=flat-square&labelColor=141311&logo=python&logoColor=F3EFE6">
-  <img alt="FastAPI" src="https://img.shields.io/badge/api-FastAPI-E3401A?style=flat-square&labelColor=141311&logo=fastapi&logoColor=F3EFE6">
-  <img alt="Memory: Hindsight" src="https://img.shields.io/badge/memory-Hindsight-E3401A?style=flat-square&labelColor=141311">
-  <img alt="Model: Groq gpt-oss-120b" src="https://img.shields.io/badge/model-Groq%20gpt--oss--120b-E3401A?style=flat-square&labelColor=141311">
-  <img alt="Offline mock mode" src="https://img.shields.io/badge/offline-mock%20mode-C9A15B?style=flat-square&labelColor=141311">
-  <img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-F3EFE6?style=flat-square&labelColor=141311">
+  <a href="https://www.python.org/"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-E3401A?style=flat-square&labelColor=141311&logo=python&logoColor=F3EFE6"></a>
+  <a href="https://fastapi.tiangolo.com/"><img alt="FastAPI" src="https://img.shields.io/badge/api-FastAPI-E3401A?style=flat-square&labelColor=141311&logo=fastapi&logoColor=F3EFE6"></a>
+  <a href="https://github.com/vectorize-io/hindsight"><img alt="Memory: Hindsight" src="https://img.shields.io/badge/memory-Hindsight-E3401A?style=flat-square&labelColor=141311"></a>
+  <a href="https://console.groq.com/docs/model/openai/gpt-oss-120b"><img alt="Model: Groq gpt-oss-120b" src="https://img.shields.io/badge/model-Groq%20gpt--oss--120b-E3401A?style=flat-square&labelColor=141311"></a>
+  <a href="backend/memory.py"><img alt="Offline mock mode" src="https://img.shields.io/badge/offline-mock%20mode-C9A15B?style=flat-square&labelColor=141311"></a>
+  <a href="LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-F3EFE6?style=flat-square&labelColor=141311"></a>
 </p>
 
 <h3 align="center">Answers vendor pre-qualification questionnaires from the company's own memory.<br>Cites the evidence. Flags what it can't prove. Never invents a certificate.</h3>
