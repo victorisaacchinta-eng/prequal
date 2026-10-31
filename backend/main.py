@@ -111,7 +111,10 @@ class RetainBody(BaseModel):
 @app.post("/api/memory/retain")
 async def memory_retain(body: RetainBody):
     """Retain one fact live. Used in the demo to add a new financial year's turnover on stage."""
-    ts = datetime.fromisoformat(body.timestamp) if body.timestamp else None
+    try:
+        ts = datetime.fromisoformat(body.timestamp) if body.timestamp else None
+    except ValueError:
+        raise HTTPException(400, f"timestamp must be an ISO date such as 2026-04-01, got {body.timestamp!r}")
     try:
         await run_in_threadpool(lambda: mem.get_memory().retain(body.content, context=body.context, timestamp=ts, tags=body.tags))
     except Exception as exc:
