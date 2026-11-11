@@ -8,3 +8,4 @@ venv/
 *.bak
 .env.*
 !.env.example
+.pytest_cache/
