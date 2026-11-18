@@ -219,8 +219,20 @@ async def brief(qid: int):
     return {"ok": True, "brief": text}
 
 
+_FORMULA_PREFIXES = ("=", "+", "-", "@", "\t", "\r")
+
+
+def _csv_safe(value):
+    """Quote a text cell that Excel or Sheets would run as a formula (CSV injection)."""
+    if isinstance(value, str) and value.startswith(_FORMULA_PREFIXES):
+        return "'" + value
+    return value
+
+
 @app.get("/api/questionnaires/{qid}/export")
 def export(qid: int, format: str = "json"):
+    if format not in ("json", "csv"):
+        raise HTTPException(400, "format must be json or csv")
     qn = db.get_questionnaire(qid)
     if not qn:
         raise HTTPException(404, "questionnaire not found")
@@ -234,7 +246,7 @@ def export(qid: int, format: str = "json"):
         buf = io.StringIO()
         w = csv.DictWriter(buf, fieldnames=list(rows[0].keys()) if rows else ["ordinal"])
         w.writeheader()
-        w.writerows(rows)
+        w.writerows({k: _csv_safe(v) for k, v in r.items()} for r in rows)
         return StreamingResponse(iter([buf.getvalue()]), media_type="text/csv",
                                  headers={"Content-Disposition": f"attachment; filename={fname}.csv"})
     return JSONResponse({"questionnaire": {k: qn[k] for k in ("id", "slug", "client", "title", "received_on", "due_on")}, "answers": rows},
