@@ -46,3 +46,25 @@ def test_unknown_format_is_400(monkeypatch):
     with pytest.raises(HTTPException) as exc:
         main.export(1, format="xlsx")
     assert exc.value.status_code == 400
+
+
+@pytest.mark.parametrize("client, slug", [
+    ("Acme Corp", "acme-corp"),
+    ("Sharma & Sons; Pvt.", "sharma-sons-pvt"),
+    ("शर्मा ट्रेडर्स", "questionnaire"),
+    ("₹ Traders", "traders"),
+])
+def test_slugify_keeps_only_ascii_letters_digits_hyphens(client, slug):
+    assert main._slugify(client) == slug
+
+
+@pytest.mark.parametrize("format", ["json", "csv"])
+def test_export_with_non_ascii_slug_sets_safe_filename(monkeypatch, format):
+    qn = {**_questionnaire(), "slug": 'शर्मा ₹;"x', "client": "Sharma", "title": "T",
+          "received_on": None, "due_on": None}
+    monkeypatch.setattr(main.db, "get_questionnaire", lambda qid: qn)
+    resp = main.export(1, format=format)
+    header = resp.headers["content-disposition"]
+    header.encode("latin-1")  # Starlette sends headers as latin-1
+    assert f'filename="_x-answers.{format}";' in header
+    assert header.endswith(f"filename*=UTF-8''%E0%A4%B6%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%20%E2%82%B9%3B%22x-answers.{format}")
