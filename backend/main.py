@@ -8,7 +8,9 @@ import io
 import json
 import logging
 import os
+import re
 from datetime import datetime
+from urllib.parse import quote
 
 from dotenv import load_dotenv
 
@@ -155,10 +157,15 @@ class QuestionnaireIn(BaseModel):
     questions: list[QuestionIn]
 
 
+def _slugify(text: str) -> str:
+    """Lowercase ASCII letters, digits and single hyphens, or "questionnaire" if nothing is left."""
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-") or "questionnaire"
+
+
 @app.post("/api/questionnaires")
 def create_questionnaire(body: QuestionnaireIn):
     data = body.model_dump()
-    data["slug"] = data["slug"] or f"{body.client.lower().replace(' ', '-')}-{int(datetime.utcnow().timestamp())}"
+    data["slug"] = data["slug"] or f"{_slugify(body.client)}-{int(datetime.utcnow().timestamp())}"
     qid = db.upsert_questionnaire(data)
     return {"ok": True, "id": qid}
 
@@ -229,6 +236,12 @@ def _csv_safe(value):
     return value
 
 
+def _attachment(filename: str) -> str:
+    """Content-Disposition for any filename: an ASCII fallback plus the UTF-8 name (RFC 6266)."""
+    fallback = re.sub(r"[^A-Za-z0-9._-]+", "_", filename)
+    return f"attachment; filename=\"{fallback}\"; filename*=UTF-8''{quote(filename, safe='')}"
+
+
 @app.get("/api/questionnaires/{qid}/export")
 def export(qid: int, format: str = "json"):
     if format not in ("json", "csv"):
@@ -248,9 +261,9 @@ def export(qid: int, format: str = "json"):
         w.writeheader()
         w.writerows({k: _csv_safe(v) for k, v in r.items()} for r in rows)
         return StreamingResponse(iter([buf.getvalue()]), media_type="text/csv",
-                                 headers={"Content-Disposition": f"attachment; filename={fname}.csv"})
+                                 headers={"Content-Disposition": _attachment(f"{fname}.csv")})
     return JSONResponse({"questionnaire": {k: qn[k] for k in ("id", "slug", "client", "title", "received_on", "due_on")}, "answers": rows},
-                        headers={"Content-Disposition": f"attachment; filename={fname}.json"})
+                        headers={"Content-Disposition": _attachment(f"{fname}.json")})
 
 
 # ---------------------------------------------------------------------------
